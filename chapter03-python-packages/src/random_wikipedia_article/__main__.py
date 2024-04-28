@@ -1,3 +1,4 @@
-from random_wikipedia_article import main
+import random_wikipedia_article
+import sys
 
-main()
+sys.exit(random_wikipedia_article.main())
