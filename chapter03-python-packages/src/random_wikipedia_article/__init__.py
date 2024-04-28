@@ -11,7 +11,3 @@ def main():
 
     print(data["title"], end="\n\n")
     print(textwrap.fill(data["extract"]))
-
-
-if __name__ == "__main__":
-    main()
