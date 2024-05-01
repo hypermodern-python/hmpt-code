@@ -1,12 +1,9 @@
 [project]
 name = "random-wikipedia-article"
-dynamic = ["version"]
+version = "0.1"
 
 [project.scripts]
 random-wikipedia-article = "random_wikipedia_article:main"
-
-[tool.hatch.version]
-path = "src/random_wikipedia_article/__init__.py"
 
 [build-system]
 requires = ["hatchling"]

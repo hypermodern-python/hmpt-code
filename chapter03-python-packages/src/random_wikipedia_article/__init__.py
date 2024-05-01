@@ -1,8 +1,9 @@
 import json
 import textwrap
 import urllib.request
+from importlib.metadata import version
 
-__version__ = "0.1"
+__version__ = version("random-wikipedia-article")
 
 API_URL = "https://en.wikipedia.org/api/rest_v1/page/random/summary"
 
