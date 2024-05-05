@@ -8,7 +8,7 @@ USER_AGENT = "random-wikipedia-article/0.1 (Contact: you@example.com)"
 def main():
     headers = {"User-Agent": USER_AGENT}
 
-    with httpx.Client(headers=headers) as client:
+    with httpx.Client(headers=headers, http2=True) as client:
         response = client.get(API_URL, follow_redirects=True)
         response.raise_for_status()
         data = response.json()
