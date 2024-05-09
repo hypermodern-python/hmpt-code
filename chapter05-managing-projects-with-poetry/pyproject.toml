@@ -33,6 +33,9 @@ random-wikipedia-article = "random_wikipedia_article:main"
 pytest = "^8.1.1"
 pytest-sugar = "^1.0.0"
 
+[tool.poetry.group.docs]
+optional = true
+
 [tool.poetry.group.docs.dependencies]
 sphinx = "^7.2.6"
 
