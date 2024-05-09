@@ -30,6 +30,7 @@ tests = [
     "pytest>=8.1.1",
     "pytest-httpserver>=1.0.10",
     "pytest-xdist>=3.6.1",
+    "factory-boy>=3.3.0",
 ]
 
 [project.urls]

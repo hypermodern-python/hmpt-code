@@ -3,6 +3,7 @@ import subprocess
 import sys
 
 import pytest
+from factory import Factory, Faker
 
 from random_wikipedia_article import Article, fetch, show
 
@@ -22,15 +23,15 @@ def parametrized_fixture(*params):
     return pytest.fixture(params=params)(lambda request: request.param)
 
 
-article = parametrized_fixture(
-    Article(),
-    Article("test"),
-    Article("Lorem Ipsum", "Lorem ipsum dolor sit amet."),
-    Article(
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "Nulla mattis volutpat sapien, at dapibus ipsum accumsan eu.",
-    ),
-)
+class ArticleFactory(Factory):
+    class Meta:
+        model = Article
+
+    title = Faker("sentence")
+    summary = Faker("paragraph")
+
+
+article = parametrized_fixture(*ArticleFactory.build_batch(10))
 
 
 def test_final_newline(article, file):
