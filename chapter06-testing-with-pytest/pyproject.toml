@@ -23,7 +23,7 @@ classifiers = [
     "Topic :: Games/Entertainment :: Fortune Cookies",
 ]
 requires-python = ">=3.8"
-dependencies = ["rich>=13.7.1"]
+dependencies = ["httpx[http2]>=0.27.0", "rich>=13.7.1"]
 
 [project.optional-dependencies]
 tests = ["pytest>=8.1.1"]
