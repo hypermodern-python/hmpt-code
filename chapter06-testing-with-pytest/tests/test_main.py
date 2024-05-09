@@ -29,7 +29,11 @@ articles = [
 ]
 
 
-@pytest.mark.parametrize("article", articles)
+@pytest.fixture(params=articles)
+def article(request):
+    return request.param
+
+
 def test_final_newline(article, file):
     show(article, file)
     assert file.getvalue().endswith("\n")
