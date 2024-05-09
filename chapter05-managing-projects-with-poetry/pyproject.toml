@@ -20,7 +20,7 @@ include = ["tests"]
 
 [tool.poetry.dependencies]
 python = ">=3.10"
-rich = "^13.7.1"
+rich = ">=13.7.1"
 
 [tool.poetry.urls]
 Issues = "https://github.com/yourname/random-wikipedia-article/issues"
