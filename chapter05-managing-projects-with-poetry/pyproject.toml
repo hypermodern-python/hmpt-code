@@ -29,6 +29,10 @@ Issues = "https://github.com/yourname/random-wikipedia-article/issues"
 [tool.poetry.scripts]
 random-wikipedia-article = "random_wikipedia_article:main"
 
+[tool.poetry.group.tests.dependencies]
+pytest = "^8.1.1"
+pytest-sugar = "^1.0.0"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
