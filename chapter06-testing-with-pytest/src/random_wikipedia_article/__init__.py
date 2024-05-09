@@ -1,8 +1,9 @@
 import sys
 import json
-import textwrap
 import urllib.request
 from dataclasses import dataclass
+
+from rich.console import Console
 
 API_URL = "https://en.wikipedia.org/api/rest_v1/page/random/summary"
 
@@ -20,8 +21,9 @@ def fetch(url):
 
 
 def show(article, file):
-    summary = textwrap.fill(article.summary)
-    file.write(f"{article.title}\n\n{summary}\n")
+    console = Console(file=file, width=72, highlight=False)
+    console.print(article.title, style="bold", end="\n\n")
+    console.print(article.summary)
 
 
 def main():

@@ -2,8 +2,15 @@
 #    uv pip compile --extra=tests pyproject.toml -o dev-requirements.txt
 iniconfig==2.0.0
     # via pytest
+markdown-it-py==3.0.0
+    # via rich
+mdurl==0.1.2
+    # via markdown-it-py
 packaging==24.0
     # via pytest
 pluggy==1.5.0
     # via pytest
+pygments==2.18.0
+    # via rich
 pytest==8.2.0
+rich==13.7.1
