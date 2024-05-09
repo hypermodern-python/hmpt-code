@@ -1,9 +1,6 @@
-import http.server
 import io
-import json
 import subprocess
 import sys
-import threading
 
 import pytest
 
@@ -41,33 +38,12 @@ def test_final_newline(article, file):
     assert file.getvalue().endswith("\n")
 
 
-@pytest.fixture(scope="session")
-def httpserver():
-    class Handler(http.server.BaseHTTPRequestHandler):
-        def do_GET(self):
-            article = self.server.article
-            data = {"title": article.title, "extract": article.summary}
-            body = json.dumps(data).encode()
-
-            self.send_response(200)
-            self.send_header("Content-Type", "application/json")
-            self.send_header("Content-Length", str(len(body)))
-            self.end_headers()
-            self.wfile.write(body)
-
-    with http.server.HTTPServer(("localhost", 0), Handler) as server:
-        thread = threading.Thread(target=server.serve_forever, daemon=True)
-        thread.start()
-        yield server
-        server.shutdown()
-        thread.join()
-
-
 @pytest.fixture
 def serve(httpserver):
     def f(article):
-        httpserver.article = article
-        return f"http://localhost:{httpserver.server_port}"
+        json = {"title": article.title, "extract": article.summary}
+        httpserver.expect_request("/").respond_with_json(json)
+        return httpserver.url_for("/")
 
     return f
 

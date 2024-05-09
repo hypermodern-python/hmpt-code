@@ -26,7 +26,7 @@ requires-python = ">=3.8"
 dependencies = ["httpx[http2]>=0.27.0", "rich>=13.7.1"]
 
 [project.optional-dependencies]
-tests = ["pytest>=8.1.1"]
+tests = ["pytest>=8.1.1", "pytest-httpserver>=1.0.10"]
 
 [project.urls]
 Homepage = "https://yourname.dev/projects/random-wikipedia-article"
