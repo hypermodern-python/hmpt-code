@@ -1,3 +1,5 @@
+import argparse
+
 import httpx
 from rich.console import Console
 
@@ -6,8 +8,16 @@ from importlib.metadata import metadata
 API_URL = "https://en.wikipedia.org/api/rest_v1/page/random/summary"
 USER_AGENT = "{Name}/{Version} (Contact: {Author-email})"
 
+__version__ = "0.0.0"
+
 
 def main():
+    parser = argparse.ArgumentParser(prog="random-wikipedia-article")
+    parser.add_argument(
+        "--version", action="version", version=f"%(prog)s {__version__}"
+    )
+    parser.parse_args()
+
     fields = metadata("random-wikipedia-article")
     headers = {"User-Agent": USER_AGENT.format_map(fields)}
 
