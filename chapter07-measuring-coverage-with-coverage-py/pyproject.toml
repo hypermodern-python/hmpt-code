@@ -31,6 +31,7 @@ tests = [
     "pytest-httpserver>=1.0.10",
     "pytest-xdist>=3.6.1",
     "factory-boy>=3.3.0",
+    "coverage[toml]",
 ]
 
 [project.urls]
