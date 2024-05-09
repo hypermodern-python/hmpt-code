@@ -2,6 +2,8 @@ import io
 import subprocess
 import sys
 
+import pytest
+
 from random_wikipedia_article import Article, show
 
 
@@ -11,8 +13,12 @@ def test_output():
     assert process.stdout
 
 
-def test_final_newline():
+@pytest.fixture
+def file():
+    return io.StringIO()
+
+
+def test_final_newline(file):
     article = Article("Lorem Ipsum", "Lorem ipsum dolor sit amet.")
-    file = io.StringIO()
     show(article, file)
     assert file.getvalue().endswith("\n")
