@@ -18,7 +18,11 @@ def file():
     return io.StringIO()
 
 
-articles = [
+def parametrized_fixture(*params):
+    return pytest.fixture(params=params)(lambda request: request.param)
+
+
+article = parametrized_fixture(
     Article(),
     Article("test"),
     Article("Lorem Ipsum", "Lorem ipsum dolor sit amet."),
@@ -26,12 +30,7 @@ articles = [
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "Nulla mattis volutpat sapien, at dapibus ipsum accumsan eu.",
     ),
-]
-
-
-@pytest.fixture(params=articles)
-def article(request):
-    return request.param
+)
 
 
 def test_final_newline(article, file):
