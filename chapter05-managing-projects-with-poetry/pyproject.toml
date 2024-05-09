@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "random-wikipedia-article"
-version = "0.1.0"
+version = "0.0.0"
 description = "Display extracts from random Wikipedia articles"
 keywords = ["wikipedia"]
 license = "MIT"
