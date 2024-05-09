@@ -4,7 +4,7 @@ import sys
 
 import pytest
 
-from random_wikipedia_article import Article, show
+from random_wikipedia_article import Article, fetch, show
 
 
 def test_output():
@@ -36,3 +36,8 @@ article = parametrized_fixture(
 def test_final_newline(article, file):
     show(article, file)
     assert file.getvalue().endswith("\n")
+
+
+def test_fetch(article):
+    with serve(article) as url:
+        assert article == fetch(url)
