@@ -18,8 +18,10 @@ def constraints(session):
     return Path("constraints") / filename
 
 
-@nox.session(venv_backend="uv")
+@nox.session(python=["3.12", "3.11", "3.10", "3.9", "3.8", "3.7"], venv_backend="uv")
 def lock(session):
+    filename = constraints(session)
+    filename.parent.mkdir(exist_ok=True)
     session.run(
         "uv",
         "pip",
@@ -28,7 +30,7 @@ def lock(session):
         "--upgrade",
         "--quiet",
         "--all-extras",
-        "--output-file=constraints.txt",
+        f"--output-file={filename}",
     )
 
 
