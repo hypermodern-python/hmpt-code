@@ -30,7 +30,8 @@ def fetch(url):
 def show(article, file):
     console = Console(file=file, width=72, highlight=False)
     console.print(article.title, style="bold", end="\n\n")
-    console.print(article.summary)
+    if article.summary:
+        console.print(article.summary)
 
 
 def main():  # pragma: no cover
