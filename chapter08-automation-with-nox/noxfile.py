@@ -45,6 +45,7 @@ def tests(session):
 
 @nox.session
 def coverage(session):
+    """Generate the coverage report."""
     session.install("coverage[toml]")
     if any(Path().glob(".coverage.*")):
         session.run("coverage", "combine")
