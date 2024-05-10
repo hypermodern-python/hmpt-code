@@ -11,6 +11,20 @@ nox.options.error_on_external_run = True
 nox.options.sessions = ["tests"]
 
 
+@nox.session(venv_backend="uv")
+def lock(session):
+    session.run(
+        "uv",
+        "pip",
+        "compile",
+        "pyproject.toml",
+        "--upgrade",
+        "--quiet",
+        "--all-extras",
+        "--output-file=constraints.txt",
+    )
+
+
 @nox.session
 def build(session):
     """Build the package."""
