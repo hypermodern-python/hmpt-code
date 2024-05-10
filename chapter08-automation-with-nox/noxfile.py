@@ -27,4 +27,4 @@ def build(session):
 def tests(session):
     """Run the test suite."""
     session.install(".[tests]")
-    session.run("pytest", *session.posargs)
+    session.run("coverage", "run", "-m", "pytest", *session.posargs)
