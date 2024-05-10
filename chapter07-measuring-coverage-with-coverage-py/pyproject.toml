@@ -49,7 +49,6 @@ random-wikipedia-article = "random_wikipedia_article:main"
 
 [tool.coverage.run]
 source = ["random_wikipedia_article", "tests"]
-omit = ["*/__main__.py"]
 branch = true
 parallel = true
 
