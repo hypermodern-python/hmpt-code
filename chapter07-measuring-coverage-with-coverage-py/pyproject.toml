@@ -49,6 +49,7 @@ omit = ["*/__main__.py"]
 
 [tool.coverage.report]
 show_missing = true
+fail_under = 100
 
 [build-system]
 requires = ["hatchling"]
