@@ -17,7 +17,7 @@ def build(session):
     session.run("twine", "check", *Path().glob("dist/*"))
 
 
-@nox.session
+@nox.session(python=["3.12", "3.11", "3.10"])
 def tests(session):
     """Run the test suite."""
     session.install(".", "pytest", "pytest-httpserver", "factory-boy")
