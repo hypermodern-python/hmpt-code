@@ -9,6 +9,23 @@ nox.options.error_on_external_run = True
 nox.options.sessions = ["tests"]
 
 
+def install(session, groups, root=True):
+    if root:
+        groups = ["main", *groups]
+
+    session.run_install(
+        "poetry",
+        "install",
+        "--no-root",
+        "--sync",
+        f"--only={','.join(groups)}",
+        external=True,
+    )
+
+    if root:
+        session.install(".")
+
+
 @nox.session
 def build(session):
     """Build the package."""
