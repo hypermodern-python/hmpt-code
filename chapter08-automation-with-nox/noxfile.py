@@ -20,6 +20,7 @@ def constraints(session):
 
 @nox.session(python=["3.12", "3.11", "3.10", "3.9", "3.8", "3.7"], venv_backend="uv")
 def lock(session):
+    """Lock the dependencies."""
     filename = constraints(session)
     filename.parent.mkdir(exist_ok=True)
     session.run(
