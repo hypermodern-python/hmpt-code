@@ -2,13 +2,20 @@
 Run the checks and tasks for this project.
 """
 
+import platform
 import shutil
+import sys
 from pathlib import Path
 
 import nox
 
 nox.options.error_on_external_run = True
 nox.options.sessions = ["tests"]
+
+
+def constraints(session):
+    filename = f"python{session.python}-{sys.platform}-{platform.machine()}.txt"
+    return Path("constraints") / filename
 
 
 @nox.session(venv_backend="uv")
