@@ -3,5 +3,5 @@ import nox
 
 @nox.session
 def tests(session):
-    session.install(".", "pytest")
+    session.install(".", "pytest", "pytest-httpserver", "factory-boy")
     session.run("pytest")
