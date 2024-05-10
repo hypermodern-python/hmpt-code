@@ -34,8 +34,11 @@ def install_coverage_pth(session):
 def tests(session):
     """Run the test suite."""
     session.install(".", "coverage[toml]", "pytest", "pytest-httpserver", "factory-boy")
+    install_coverage_pth(session)
+
     try:
-        session.run("coverage", "run", "-m", "pytest", *session.posargs)
+        args = ["coverage", "run", "-m", "pytest", *session.posargs]
+        session.run(*args, env={"COVERAGE_PROCESS_START": "pyproject.toml"})
     finally:
         session.notify("coverage")
 
