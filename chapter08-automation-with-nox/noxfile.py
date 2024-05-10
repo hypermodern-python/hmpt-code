@@ -24,6 +24,19 @@ def build(session):
     session.run("twine", "check", *distdir.glob("*"))
 
 
+def install_coverage_pth(session):
+    output = session.run(
+        "python",
+        "-c",
+        "import sysconfig; print(sysconfig.get_path('purelib'))",
+        silent=True,
+    )
+    purelib = Path(output.strip())
+    (purelib / "_coverage.pth").write_text(
+        "import coverage; coverage.process_startup()"
+    )
+
+
 @nox.session(python=["3.12", "3.11", "3.10", "3.9", "3.8", "3.7"])
 def tests(session):
     """Run the test suite."""
