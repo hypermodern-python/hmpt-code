@@ -7,6 +7,7 @@ from pathlib import Path
 import nox
 
 nox.options.error_on_external_run = True
+nox.options.sessions = ["tests"]
 
 
 @nox.session
