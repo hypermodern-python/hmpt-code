@@ -51,6 +51,7 @@ random-wikipedia-article = "random_wikipedia_article:main"
 source = ["random_wikipedia_article", "tests"]
 omit = ["*/__main__.py"]
 branch = true
+parallel = true
 
 [tool.coverage.report]
 show_missing = true
