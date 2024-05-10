@@ -22,3 +22,11 @@ def tests(session):
     """Run the test suite."""
     session.install(".", "coverage[toml]", "pytest", "pytest-httpserver", "factory-boy")
     session.run("coverage", "run", "-m", "pytest", *session.posargs)
+
+
+@nox.session
+def coverage(session):
+    session.install("coverage[toml]")
+    if any(Path().glob(".coverage.*")):
+        session.run("coverage", "combine")
+    session.run("coverage", "report")
