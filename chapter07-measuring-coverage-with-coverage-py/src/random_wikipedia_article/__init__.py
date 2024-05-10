@@ -1,9 +1,13 @@
 import sys
 from dataclasses import dataclass
-from importlib.metadata import metadata
 
 import httpx
 from rich.console import Console
+
+if sys.version_info >= (3, 8):
+    from importlib.metadata import metadata
+else:
+    from importlib_metadata import metadata
 
 API_URL = "https://en.wikipedia.org/api/rest_v1/page/random/summary"
 USER_AGENT = "{Name}/{Version} (Contact: {Author-email})"
