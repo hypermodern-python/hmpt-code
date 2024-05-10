@@ -50,7 +50,7 @@ def install_coverage_pth(session):
 @nox.session(python=["3.12", "3.11", "3.10", "3.9", "3.8", "3.7"])
 def tests(session):
     """Run the test suite."""
-    session.install(".", "coverage[toml]", "pytest", "pytest-httpserver", "factory-boy")
+    install(session, groups=["coverage", "tests"])
     install_coverage_pth(session)
 
     try:
@@ -63,7 +63,7 @@ def tests(session):
 @nox.session
 def coverage(session):
     """Generate the coverage report."""
-    session.install("coverage[toml]")
+    install(session, groups=["coverage"], root=False)
     if any(Path().glob(".coverage.*")):
         session.run("coverage", "combine")
     session.run("coverage", "report")
