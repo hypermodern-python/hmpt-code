@@ -31,12 +31,17 @@ class ArticleFactory(Factory):
     summary = Faker("paragraph")
 
 
-article = parametrized_fixture(*ArticleFactory.build_batch(10))
+article = parametrized_fixture(Article("test"), *ArticleFactory.build_batch(10))
 
 
 def test_final_newline(article, file):
     show(article, file)
     assert file.getvalue().endswith("\n")
+
+
+def test_trailing_blank_lines(article, file):
+    show(article, file)
+    assert not file.getvalue().endswith("\n\n")
 
 
 @pytest.fixture
