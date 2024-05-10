@@ -28,7 +28,10 @@ def build(session):
 def tests(session):
     """Run the test suite."""
     session.install(".[tests]")
-    session.run("coverage", "run", "-m", "pytest", *session.posargs)
+    try:
+        session.run("coverage", "run", "-m", "pytest", *session.posargs)
+    finally:
+        session.notify("coverage")
 
 
 @nox.session
