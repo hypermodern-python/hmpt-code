@@ -38,6 +38,6 @@ def show(article, file):
         console.print(f"\n{article.summary}")
 
 
-def main():  # pragma: no cover
+def main():
     article = fetch(API_URL)
     show(article, sys.stdout)
