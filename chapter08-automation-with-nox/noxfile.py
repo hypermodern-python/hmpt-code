@@ -12,7 +12,7 @@ def build(session):
     if distdir.exists():
         shutil.rmtree(distdir)
 
-    session.run("python", "-m", "build")
+    session.run("python", "-m", "build", "--installer=uv")
     session.run("twine", "check", *distdir.glob("*"))
 
 
