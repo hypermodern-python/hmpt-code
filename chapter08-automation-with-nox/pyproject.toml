@@ -45,6 +45,9 @@ parallel = true
 show_missing = true
 fail_under = 100
 
+[tool.coverage.paths]
+source = ["src", "*/site-packages"]
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
