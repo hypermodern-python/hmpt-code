@@ -21,4 +21,4 @@ def build(session):
 def tests(session):
     """Run the test suite."""
     session.install(".", "pytest", "pytest-httpserver", "factory-boy")
-    session.run("pytest")
+    session.run("pytest", *session.posargs)
