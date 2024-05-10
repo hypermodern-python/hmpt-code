@@ -24,7 +24,7 @@ def build(session):
     session.run("twine", "check", *distdir.glob("*"))
 
 
-@nox.session(python=["3.12", "3.11", "3.10"])
+@nox.session(python=["3.12", "3.11", "3.10", "3.9", "3.8", "3.7"])
 def tests(session):
     """Run the test suite."""
     session.install(".[tests]")
