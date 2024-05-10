@@ -4,29 +4,13 @@ Run the checks and tasks for this project.
 from pathlib import Path
 
 import nox
+from nox_poetry import session
 
 nox.options.error_on_external_run = True
 nox.options.sessions = ["tests"]
 
 
-def install(session, groups, root=True):
-    if root:
-        groups = ["main", *groups]
-
-    session.run_install(
-        "poetry",
-        "install",
-        "--no-root",
-        "--sync",
-        f"--only={','.join(groups)}",
-        external=True,
-    )
-
-    if root:
-        session.install(".")
-
-
-@nox.session
+@session
 def build(session):
     """Build the package."""
     session.install("twine")
@@ -47,10 +31,10 @@ def install_coverage_pth(session):
     )
 
 
-@nox.session(python=["3.12", "3.11", "3.10", "3.9", "3.8", "3.7"])
+@session(python=["3.12", "3.11", "3.10", "3.9", "3.8", "3.7"])
 def tests(session):
     """Run the test suite."""
-    install(session, groups=["coverage", "tests"])
+    session.install(".", "coverage[toml]", "pytest", "pytest-httpserver", "factory-boy")
     install_coverage_pth(session)
 
     try:
@@ -60,10 +44,10 @@ def tests(session):
         session.notify("coverage")
 
 
-@nox.session
+@session
 def coverage(session):
     """Generate the coverage report."""
-    install(session, groups=["coverage"], root=False)
+    session.install("coverage[toml]")
     if any(Path().glob(".coverage.*")):
         session.run("coverage", "combine")
     session.run("coverage", "report")
