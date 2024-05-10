@@ -75,6 +75,7 @@ def tests(session):
 
 @nox.session(python="3.12")
 def coverage(session):
+    """Generate the coverage report."""
     session.install("-c", constraints(session), "coverage[toml]")
     if any(Path().glob(".coverage.*")):
         session.run("coverage", "combine")
