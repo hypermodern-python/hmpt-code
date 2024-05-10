@@ -54,7 +54,7 @@ def install_coverage_pth(session):
 @nox.session(python=["3.12", "3.11", "3.10", "3.9", "3.8", "3.7"])
 def tests(session):
     """Run the test suite."""
-    session.install(".[tests]")
+    session.install("-c", "constraints.txt", ".[tests]")
     install_coverage_pth(session)
 
     try:
@@ -66,7 +66,7 @@ def tests(session):
 
 @nox.session
 def coverage(session):
-    session.install("coverage[toml]")
+    session.install("-c", "constraints.txt", "coverage[toml]")
     if any(Path().glob(".coverage.*")):
         session.run("coverage", "combine")
     session.run("coverage", "report")
