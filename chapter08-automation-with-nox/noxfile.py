@@ -20,5 +20,5 @@ def build(session):
 @nox.session(python=["3.12", "3.11", "3.10"])
 def tests(session):
     """Run the test suite."""
-    session.install(".", "pytest", "pytest-httpserver", "factory-boy")
-    session.run("pytest", *session.posargs)
+    session.install(".", "coverage[toml]", "pytest", "pytest-httpserver", "factory-boy")
+    session.run("coverage", "run", "-m", "pytest", *session.posargs)
