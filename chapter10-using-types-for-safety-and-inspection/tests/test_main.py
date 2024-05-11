@@ -56,3 +56,11 @@ def serve(httpserver: pytest_httpserver.HTTPServer) -> Callable[[Article], str]:
 
 def test_fetch(article: Article, serve: Callable[[Article], str]) -> None:
     assert article == fetch(serve(article))
+
+
+def test_fetch_validates(
+    article: Article, httpserver: pytest_httpserver.HTTPServer
+) -> None:
+    httpserver.expect_request("/").respond_with_json(None)
+    with pytest.raises(ValueError, match="invalid response"):
+        fetch(httpserver.url_for("/"))
