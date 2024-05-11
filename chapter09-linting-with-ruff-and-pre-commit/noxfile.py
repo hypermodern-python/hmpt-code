@@ -10,7 +10,7 @@ from pathlib import Path
 import nox
 
 nox.options.error_on_external_run = True
-nox.options.sessions = ["tests"]
+nox.options.sessions = ["lint", "tests"]
 
 
 def constraints(session):
@@ -50,9 +50,10 @@ def build(session):
 
 @nox.session
 def lint(session):
-    """Lint using Ruff."""
-    session.install("ruff")
-    session.run("ruff", "check")
+    """Lint using pre-commit."""
+    options = ["--all-files", "--show-diff-on-fail"]
+    session.install("pre-commit")
+    session.run("pre-commit", "run", *options, *session.posargs)
 
 
 def install_coverage_pth(session):
