@@ -21,6 +21,7 @@ classifiers = [
     "Topic :: Games/Entertainment :: Fortune Cookies",
 ]
 requires-python = ">=3.10"
+dependencies = ["cattrs>=23.2.3"]
 
 [project.optional-dependencies]
 tests = [
