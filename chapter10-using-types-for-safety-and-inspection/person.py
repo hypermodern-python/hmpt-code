@@ -2,7 +2,11 @@ import json
 from pathlib import Path
 from typing import Any, TypedDict
 
-from typeguard import check_type, typechecked
+import typeguard
+from typeguard import check_type, typechecked, CollectionCheckStrategy
+
+
+typeguard.config.collection_check_strategy = CollectionCheckStrategy.ALL_ITEMS
 
 
 class Person(TypedDict):
