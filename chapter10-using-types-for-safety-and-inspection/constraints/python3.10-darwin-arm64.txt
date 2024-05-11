@@ -10,6 +10,7 @@ exceptiongroup==1.2.1
 execnet==2.1.1
     # via pytest-xdist
 factory-boy==3.3.0
+    # via types-factory-boy
 faker==25.8.0
     # via factory-boy
 filelock==3.15.1
@@ -47,8 +48,11 @@ tomli==2.0.1
     #   coverage
     #   mypy
     #   pytest
+types-factory-boy==0.4.1
 typing-extensions==4.12.2
-    # via mypy
+    # via
+    #   mypy
+    #   types-factory-boy
 virtualenv==20.26.2
     # via pre-commit
 werkzeug==3.0.3

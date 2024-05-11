@@ -33,7 +33,10 @@ tests = [
 lint = [
     "pre-commit>=3.7.1",
 ]
-typing = ["mypy>=1.10.0"]
+typing = [
+    "mypy>=1.10.0",
+    "types-factory-boy>=0.4.1",
+]
 
 
 [project.urls]
