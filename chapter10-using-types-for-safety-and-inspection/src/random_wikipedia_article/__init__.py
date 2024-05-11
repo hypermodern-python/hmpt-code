@@ -3,7 +3,7 @@ import sys
 import textwrap
 import urllib.request
 from dataclasses import dataclass
-from typing import Final, TextIO
+from typing import Final, TextIO, TypeAlias
 
 API_URL: Final = "https://en.wikipedia.org/api/rest_v1/page/random/summary"
 
@@ -14,9 +14,12 @@ class Article:
     summary: str = ""
 
 
+JSON: TypeAlias = None | bool | int | float | str | list["JSON"] | dict[str, "JSON"]
+
+
 def fetch(url: str) -> Article:
     with urllib.request.urlopen(url) as response:
-        data = json.load(response)
+        data: JSON = json.load(response)
     return Article(data["title"], data["extract"])
 
 
