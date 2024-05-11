@@ -48,6 +48,9 @@ random-wikipedia-article = "random_wikipedia_article:main"
 [tool.ruff.lint.per-file-ignores]
 "obscure.py" = ["F821"]
 
+[tool.mypy]
+strict = true
+
 [tool.coverage.run]
 source = ["random_wikipedia_article", "tests"]
 branch = true
