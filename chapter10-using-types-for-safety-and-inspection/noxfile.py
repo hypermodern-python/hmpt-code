@@ -10,7 +10,7 @@ from pathlib import Path
 import nox
 
 nox.options.error_on_external_run = True
-nox.options.sessions = ["lint", "tests"]
+nox.options.sessions = ["lint", "mypy", "tests"]
 
 
 def constraints(session):
@@ -58,8 +58,8 @@ def lint(session):
 
 @nox.session(python=["3.12", "3.11", "3.10"])
 def mypy(session: nox.Session) -> None:
-    session.install(".[typing]")
-    session.run("mypy", "src")
+    session.install(".[typing,tests]")
+    session.run("mypy", "src", "tests")
 
 
 def install_coverage_pth(session):
