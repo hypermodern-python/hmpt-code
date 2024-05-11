@@ -18,3 +18,5 @@ repos:
         # This is a workaround specific to this repository. Only run the hook on
         # files in the current project.
         files: "^chapter09-linting-with-ruff-and-pre-commit"
+
+      - id: ruff-format
