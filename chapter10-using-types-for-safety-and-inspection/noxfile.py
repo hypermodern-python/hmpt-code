@@ -13,13 +13,13 @@ nox.options.error_on_external_run = True
 nox.options.sessions = ["lint", "mypy", "tests"]
 
 
-def constraints(session):
+def constraints(session: nox.Session) -> Path:
     filename = f"python{session.python}-{sys.platform}-{platform.machine()}.txt"
     return Path("constraints") / filename
 
 
 @nox.session(python=["3.12", "3.11", "3.10"], venv_backend="uv")
-def lock(session):
+def lock(session: nox.Session) -> None:
     """Lock the dependencies."""
     filename = constraints(session)
     filename.parent.mkdir(exist_ok=True)
@@ -36,7 +36,7 @@ def lock(session):
 
 
 @nox.session
-def build(session):
+def build(session: nox.Session) -> None:
     """Build the package."""
     session.install("build", "twine")
 
@@ -49,7 +49,7 @@ def build(session):
 
 
 @nox.session(python="3.12")
-def lint(session):
+def lint(session: nox.Session) -> None:
     """Lint using pre-commit."""
     options = ["--all-files", "--show-diff-on-fail"]
     session.install(f"--constraint={constraints(session)}", "pre-commit")
@@ -63,13 +63,16 @@ def mypy(session: nox.Session) -> None:
     session.run("mypy", f"--python-executable={sys.executable}", "noxfile.py")
 
 
-def install_coverage_pth(session):
-    output = session.run(
+def install_coverage_pth(session: nox.Session) -> None:
+    output = session.run_install(
         "python",
         "-c",
         "import sysconfig; print(sysconfig.get_path('purelib'))",
         silent=True,
     )
+    if output is None:
+        return  # --no-install
+
     purelib = Path(output.strip())
     (purelib / "_coverage.pth").write_text(
         "import coverage; coverage.process_startup()"
@@ -77,9 +80,9 @@ def install_coverage_pth(session):
 
 
 @nox.session(python=["3.12", "3.11", "3.10"])
-def tests(session):
+def tests(session: nox.Session) -> None:
     """Run the test suite."""
-    session.install("-c", constraints(session), ".[tests]")
+    session.install(f"--constraint={constraints(session)}", ".[tests]")
     install_coverage_pth(session)
 
     try:
@@ -90,9 +93,9 @@ def tests(session):
 
 
 @nox.session(python="3.12")
-def coverage(session):
+def coverage(session: nox.Session) -> None:
     """Generate the coverage report."""
-    session.install("-c", constraints(session), "coverage[toml]")
+    session.install(f"--constraint={constraints(session)}", "coverage[toml]")
     if any(Path().glob(".coverage.*")):
         session.run("coverage", "combine")
     session.run("coverage", "report")
