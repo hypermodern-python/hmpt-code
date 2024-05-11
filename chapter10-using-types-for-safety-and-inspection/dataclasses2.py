@@ -1,9 +1,12 @@
 import inspect
 import sys
-from typing import dataclass_transform
+from typing import Any, dataclass_transform, TypeVar
 
 
-def build_dataclass_init[T](cls: type[T]) -> str:
+T = TypeVar("T")
+
+
+def build_dataclass_init(cls: type[T]) -> str:
     annotations = inspect.get_annotations(cls)
 
     args: list[str] = ["self"]
@@ -20,12 +23,12 @@ def build_dataclass_init[T](cls: type[T]) -> str:
 
 
 @dataclass_transform()
-def dataclass[T](cls: type[T]) -> type[T]:
+def dataclass(cls: type[T]) -> type[T]:
     sourcecode = build_dataclass_init(cls)
 
     globals = sys.modules[cls.__module__].__dict__
-    locals = {}
+    locals: dict[str, Any] = {}
     exec(sourcecode, globals, locals)
 
-    cls.__init__ = locals["__init__"]
+    cls.__init__ = locals["__init__"]  # type: ignore[method-assign]
     return cls
