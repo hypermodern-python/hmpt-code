@@ -48,6 +48,13 @@ def build(session):
     session.run("twine", "check", *distdir.glob("*"))
 
 
+@nox.session
+def lint(session):
+    """Lint using Ruff."""
+    session.install("ruff")
+    session.run("ruff", "check")
+
+
 def install_coverage_pth(session):
     output = session.run(
         "python",
