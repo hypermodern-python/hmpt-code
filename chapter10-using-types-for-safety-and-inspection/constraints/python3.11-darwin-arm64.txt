@@ -18,6 +18,9 @@ iniconfig==2.0.0
     # via pytest
 markupsafe==2.1.5
     # via werkzeug
+mypy==1.10.0
+mypy-extensions==1.0.0
+    # via mypy
 nodeenv==1.9.1
     # via pre-commit
 packaging==24.1
@@ -37,6 +40,8 @@ pyyaml==6.0.1
     # via pre-commit
 six==1.16.0
     # via python-dateutil
+typing-extensions==4.12.2
+    # via mypy
 virtualenv==20.26.2
     # via pre-commit
 werkzeug==3.0.3

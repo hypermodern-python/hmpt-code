@@ -33,6 +33,8 @@ tests = [
 lint = [
     "pre-commit>=3.7.1",
 ]
+typing = ["mypy>=1.10.0"]
+
 
 [project.urls]
 Homepage = "https://yourname.dev/projects/random-wikipedia-article"
