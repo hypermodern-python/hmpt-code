@@ -19,8 +19,11 @@ def fetch(url):
     return Article(data["title"], data["extract"])
 
 
-def show(article, file):
-    summary = textwrap.fill(article.summary)
+def show(article: Article, file):
+    if article.summary is not None:
+        summary = textwrap.fill(article.summary)
+    else:
+        summary = "[CENSORED]"
     file.write(f"{article.title}\n\n{summary}\n")
 
 
