@@ -50,6 +50,7 @@ random-wikipedia-article = "random_wikipedia_article:main"
 
 [tool.mypy]
 strict = true
+pretty = true
 
 [tool.coverage.run]
 source = ["random_wikipedia_article", "tests"]
