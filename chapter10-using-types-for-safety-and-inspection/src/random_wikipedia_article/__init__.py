@@ -10,7 +10,7 @@ API_URL = "https://en.wikipedia.org/api/rest_v1/page/random/summary"
 @dataclass
 class Article:
     title: str = ""
-    summary: str | None = None
+    summary: str = ""
 
 
 def fetch(url):
@@ -19,11 +19,8 @@ def fetch(url):
     return Article(data["title"], data["extract"])
 
 
-def show(article: Article, file):
-    if article.summary is not None:
-        summary = textwrap.fill(article.summary)
-    else:
-        summary = "[CENSORED]"
+def show(article, file):
+    summary = textwrap.fill(article.summary)
     file.write(f"{article.title}\n\n{summary}\n")
 
 
