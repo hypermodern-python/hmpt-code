@@ -20,3 +20,6 @@ repos:
         files: "^chapter09-linting-with-ruff-and-pre-commit"
 
       - id: ruff-format
+
+        # See above.
+        args: ["--config=chapter09-linting-with-ruff-and-pre-commit/pyproject.toml"]
