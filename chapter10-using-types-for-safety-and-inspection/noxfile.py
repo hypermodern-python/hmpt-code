@@ -58,6 +58,7 @@ def lint(session: nox.Session) -> None:
 
 @nox.session(python=["3.12", "3.11", "3.10"])
 def mypy(session: nox.Session) -> None:
+    """Type-check using mypy."""
     session.install(f"--constraint={constraints(session)}", ".[typing,tests]")
     session.run("mypy", "src", "tests")
     session.run("mypy", f"--python-executable={sys.executable}", "noxfile.py")
