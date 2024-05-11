@@ -53,11 +53,13 @@ tomli==2.0.1
     #   coverage
     #   mypy
     #   pytest
+typeguard==4.2.1
 types-factory-boy==0.4.1
 typing-extensions==4.12.2
     # via
     #   cattrs
     #   mypy
+    #   typeguard
     #   types-factory-boy
 virtualenv==20.26.2
     # via pre-commit
