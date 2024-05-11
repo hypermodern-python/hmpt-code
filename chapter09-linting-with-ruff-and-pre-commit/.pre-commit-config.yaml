@@ -3,4 +3,14 @@ repos:
     rev: v0.4.4
     hooks:
       - id: ruff
-        args: ["--fix", "--show-fixes", "--exit-non-zero-on-fix"]
+        args:
+          - "--fix"
+          - "--show-fixes"
+          - "--exit-non-zero-on-fix"
+
+          # This is a workaround specific to this repository. The pyproject.toml
+          # file lives in a subdirectory of the repository, while git runs
+          # pre-commit from the repository root. As a result, Ruff won't find
+          # the pyproject.toml for the project unless we point it to the file
+          # using the --config option.
+          - "--config=chapter09-linting-with-ruff-and-pre-commit/pyproject.toml"
