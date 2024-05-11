@@ -10,7 +10,7 @@ API_URL = "https://en.wikipedia.org/api/rest_v1/page/random/summary"
 @dataclass
 class Article:
     title: str = ""
-    summary: str = ""
+    summary: str | None = None
 
 
 def fetch(url):
