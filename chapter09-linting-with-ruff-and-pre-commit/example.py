@@ -1,2 +1,2 @@
 USER_AGENT = ""
-headers = {f"User-Agent": USER_AGENT}
+headers = {"User-Agent": USER_AGENT}
