@@ -47,6 +47,10 @@ Documentation = "https://readthedocs.io/random-wikipedia-article"
 [project.scripts]
 random-wikipedia-article = "random_wikipedia_article:main"
 
+[tool.ruff.lint]
+extend-select = ["B006"]
+extend-safe-fixes = ["B006"]
+
 [tool.coverage.run]
 source = ["random_wikipedia_article", "tests"]
 branch = true
