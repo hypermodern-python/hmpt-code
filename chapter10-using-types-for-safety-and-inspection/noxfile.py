@@ -60,6 +60,7 @@ def lint(session):
 def mypy(session: nox.Session) -> None:
     session.install(".[typing,tests]")
     session.run("mypy", "src", "tests")
+    session.run("mypy", f"--python-executable={sys.executable}", "noxfile.py")
 
 
 def install_coverage_pth(session):
