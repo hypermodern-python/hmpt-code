@@ -20,7 +20,12 @@ JSON: TypeAlias = None | bool | int | float | str | list["JSON"] | dict[str, "JS
 def fetch(url: str) -> Article:
     with urllib.request.urlopen(url) as response:
         data: JSON = json.load(response)
-    return Article(data["title"], data["extract"])
+
+    match data:
+        case {"title": str(title), "extract": str(extract)}:
+            return Article(title, extract)
+
+    raise ValueError("invalid response")
 
 
 def show(article: Article, file: TextIO) -> None:
