@@ -56,6 +56,12 @@ def lint(session):
     session.run("pre-commit", "run", *options, *session.posargs)
 
 
+@nox.session(python=["3.12", "3.11", "3.10"])
+def mypy(session: nox.Session) -> None:
+    session.install(".[typing]")
+    session.run("mypy", "src")
+
+
 def install_coverage_pth(session):
     output = session.run(
         "python",
