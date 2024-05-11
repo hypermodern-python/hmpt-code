@@ -13,6 +13,9 @@ nox.options.error_on_external_run = True
 nox.options.sessions = ["lint", "mypy", "tests"]
 
 
+package = "random_wikipedia_article"
+
+
 def constraints(session: nox.Session) -> Path:
     filename = f"python{session.python}-{sys.platform}-{platform.machine()}.txt"
     return Path("constraints") / filename
@@ -100,3 +103,9 @@ def coverage(session: nox.Session) -> None:
     if any(Path().glob(".coverage.*")):
         session.run("coverage", "combine")
     session.run("coverage", "report")
+
+
+@nox.session
+def typeguard(session: nox.Session) -> None:
+    session.install(".[tests]", "typeguard")
+    session.run("pytest", f"--typeguard-packages={package}")
