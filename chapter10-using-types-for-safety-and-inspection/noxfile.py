@@ -107,5 +107,6 @@ def coverage(session: nox.Session) -> None:
 
 @nox.session(python="3.12")
 def typeguard(session: nox.Session) -> None:
+    """Type-check using Typeguard."""
     session.install(f"--constraint={constraints(session)}", ".[tests]", "typeguard")
     session.run("pytest", f"--typeguard-packages={package}")
