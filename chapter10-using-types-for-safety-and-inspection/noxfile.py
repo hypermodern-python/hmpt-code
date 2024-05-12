@@ -1,6 +1,4 @@
-"""
-Run the checks and tasks for this project.
-"""
+"""Run the checks and tasks for this project."""
 
 import platform
 import shutil
