@@ -1,3 +1,4 @@
 # random-wikipedia-article
 
-Display extracts from random Wikipedia articles
+Display extracts from random Wikipedia articles.
+* License: MIT

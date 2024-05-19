@@ -5,9 +5,37 @@ description = "Display extracts from random Wikipedia articles"
 authors = [
     { name = "Your Name", email = "you@example.com" }
 ]
-dependencies = []
+dependencies = [
+    "httpx[http2]>=0.27.0",
+    "rich>=13.7.1",
+]
 readme = "README.md"
-requires-python = ">= 3.8"
+requires-python = ">= 3.12"
+license = { text = "MIT" }
+keywords = ["wikipedia"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Utilities",
+    "Topic :: Games/Entertainment :: Fortune Cookies",
+]
+
+[project.urls]
+Homepage = "https://yourname.dev/projects/random-wikipedia-article"
+Source = "https://github.com/yourname/random-wikipedia-article"
+Issues = "https://github.com/yourname/random-wikipedia-article/issues"
+Documentation = "https://readthedocs.io/random-wikipedia-article"
 
 [project.scripts]
 "random-wikipedia-article" = "random_wikipedia_article:main"
@@ -18,7 +46,11 @@ build-backend = "hatchling.build"
 
 [tool.rye]
 managed = true
-dev-dependencies = []
+dev-dependencies = [
+    "pytest>=8.2.0",
+    "pytest-sugar>=1.0.0",
+    "sphinx>=7.3.7",
+]
 
 [tool.hatch.metadata]
 allow-direct-references = true
