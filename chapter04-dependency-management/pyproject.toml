@@ -1,0 +1,27 @@
+[project]
+name = "random-wikipedia-article"
+version = "0.1.0"
+description = "Display extracts from random Wikipedia articles"
+authors = [
+    { name = "Your Name", email = "you@example.com" }
+]
+dependencies = []
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[project.scripts]
+"random-wikipedia-article" = "random_wikipedia_article:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = []
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/random_wikipedia_article"]
