@@ -33,6 +33,7 @@ dependencies = [
 [project.optional-dependencies]
 tests = ["pytest>=7.4.4", "pytest-sugar>=1.0.0"]
 docs = ["sphinx>=5.3.0"]
+dev = ["random-wikipedia-article[tests,docs]"]
 
 [project.urls]
 Homepage = "https://yourname.dev/projects/random-wikipedia-article"
