@@ -1,5 +1,5 @@
 import io
-import subprocess
+import subprocess  # noqa: S404
 import sys
 
 import pytest

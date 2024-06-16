@@ -1,4 +1,4 @@
-import subprocess
+import subprocess  # noqa: S404
 
 
 def run(command, args=None, *, force=False):
