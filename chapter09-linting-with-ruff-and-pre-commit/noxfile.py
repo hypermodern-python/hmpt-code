@@ -48,11 +48,11 @@ def build(session):
     session.run("twine", "check", *distdir.glob("*"))
 
 
-@nox.session
+@nox.session(python="3.12")
 def lint(session):
     """Lint using pre-commit."""
     options = ["--all-files", "--show-diff-on-fail"]
-    session.install("pre-commit")
+    session.install(f"--constraint={constraints(session)}", "pre-commit")
     session.run("pre-commit", "run", *options, *session.posargs)
 
 
