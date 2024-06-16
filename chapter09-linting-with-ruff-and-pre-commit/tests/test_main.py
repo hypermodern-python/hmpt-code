@@ -10,7 +10,7 @@ from random_wikipedia_article import Article, fetch, show
 
 def test_output():
     args = [sys.executable, "-m", "random_wikipedia_article"]
-    process = subprocess.run(args, capture_output=True, check=True)
+    process = subprocess.run(args, capture_output=True, check=True)  # noqa: S603
     assert process.stdout
 
 

@@ -6,4 +6,4 @@ def run(command, args=None, *, force=False):
         args = []
     if force:
         args.insert(0, "--force")
-    subprocess.run([command, *args], check=True)
+    subprocess.run([command, *args], check=True)  # noqa: S603
