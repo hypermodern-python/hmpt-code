@@ -16,6 +16,7 @@ homepage = "https://yourname.dev/projects/random-wikipedia-article"
 repository = "https://github.com/yourname/random-wikipedia-article"
 documentation = "https://readthedocs.io/random-wikipedia-article"
 packages = [{include = "random_wikipedia_article", from = "src"}]
+include = ["tests"]
 
 [tool.poetry.dependencies]
 python = ">=3.10"
