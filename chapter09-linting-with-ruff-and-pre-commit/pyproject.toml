@@ -37,6 +37,9 @@ tests = [
     "factory-boy>=3.3.0",
     "coverage[toml]>=7.2.7",
 ]
+lint = [
+    "pre-commit>=2.21.0",
+]
 
 [project.urls]
 Homepage = "https://yourname.dev/projects/random-wikipedia-article"
