@@ -4,7 +4,7 @@ import pytest
 
 
 def frobnicate(s):
-    return md5(s.encode()).hexdigest()
+    return md5(s.encode()).hexdigest()  # noqa: S324
 
 
 @pytest.mark.parametrize(
