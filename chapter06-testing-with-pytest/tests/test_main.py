@@ -13,8 +13,8 @@ def test_output():
     assert process.stdout
 
 
-@pytest.fixture
-def file():
+@pytest.fixture(name="file")
+def _file():
     return io.StringIO()
 
 
