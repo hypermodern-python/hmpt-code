@@ -2,7 +2,6 @@ import nox
 
 
 @nox.session
-@nox.parametrize("a", ["1.0", "0.9"])
-@nox.parametrize("b", ["2.2", "2.1"])
+@nox.parametrize(["a", "b"], [("1.0", "2.2"), ("0.9", "2.1")])
 def tests(session, a, b):
-    print(a, b)  # all combinations of a and b
+    print(a, b)  # only the combinations listed above
