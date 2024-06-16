@@ -60,6 +60,7 @@ ignore = [
     "CPY001", # missing-copyright-notice
     "D",      # pydocstyle
     "PT001",  # pytest-fixture-incorrect-parentheses-style
+    "ISC001", # single-line-implicit-string-concatenation
 ]
 
 [tool.ruff.lint.per-file-ignores]
