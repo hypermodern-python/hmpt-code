@@ -1,0 +1,50 @@
+[tool.poetry]
+name = "random-wikipedia-article"
+version = "0.1.0"
+description = "Display extracts from random Wikipedia articles"
+keywords = ["wikipedia"]
+license = "MIT"
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Topic :: Games/Entertainment :: Fortune Cookies",
+]
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+homepage = "https://yourname.dev/projects/random-wikipedia-article"
+repository = "https://github.com/yourname/random-wikipedia-article"
+documentation = "https://readthedocs.io/random-wikipedia-article"
+packages = [{include = "random_wikipedia_article", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+httpx = {version = ">=0.24.1", extras = ["http2"]}
+rich = ">=13.7.1"
+importlib-metadata = {version = ">=6.7.0", python = "<3.8"}
+
+[tool.poetry.urls]
+Issues = "https://github.com/yourname/random-wikipedia-article/issues"
+
+[tool.poetry.scripts]
+random-wikipedia-article = "random_wikipedia_article:main"
+
+[tool.poetry.group.tests.dependencies]
+pytest = ">=7.4.4"
+pytest-httpserver = ">=1.0.6"
+pytest-xdist = ">=3.5.0"
+factory-boy = ">=3.3.0"
+coverage = {version = ">=7.2.7", extras = ["toml"]}
+
+[tool.coverage.run]
+source = ["random_wikipedia_article", "tests"]
+branch = true
+parallel = true
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 100
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
