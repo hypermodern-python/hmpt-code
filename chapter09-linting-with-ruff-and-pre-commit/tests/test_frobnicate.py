@@ -1,3 +1,4 @@
+# ruff: noqa: E241 RUF028
 from hashlib import md5
 
 import pytest
