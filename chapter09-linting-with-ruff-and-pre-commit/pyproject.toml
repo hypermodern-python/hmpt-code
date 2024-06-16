@@ -50,6 +50,7 @@ random-wikipedia-article = "random_wikipedia_article:main"
 [tool.ruff]
 src = ["chapter09-linting-with-ruff-and-pre-commit/src"]
 preview = true
+extend-exclude = ["chapter09-linting-with-ruff-and-pre-commit/example.py"]
 
 [tool.ruff.lint]
 select = ["ALL"]
