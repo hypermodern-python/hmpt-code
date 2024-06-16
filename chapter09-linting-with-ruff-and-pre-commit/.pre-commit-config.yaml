@@ -23,3 +23,4 @@ repos:
 
         # See above.
         args: ["--config=chapter09-linting-with-ruff-and-pre-commit/pyproject.toml"]
+        files: "^chapter09-linting-with-ruff-and-pre-commit"
