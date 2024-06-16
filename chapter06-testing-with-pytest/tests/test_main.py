@@ -63,6 +63,9 @@ def httpserver():
         thread.join()
 
 
-def test_fetch(article):
-    with serve(article) as url:
-        assert article == fetch(url)
+def test_fetch(article, httpserver):
+    def serve(article):
+        httpserver.article = article
+        return f"http://localhost:{httpserver.server_port}"
+
+    assert article == fetch(serve(article))
