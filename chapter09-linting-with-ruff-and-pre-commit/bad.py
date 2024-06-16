@@ -1,7 +1,7 @@
 import subprocess
 
 
-def run(command, args=None, force=False):
+def run(command, args=None, *, force=False):
     if args is None:
         args = []
     if force:
