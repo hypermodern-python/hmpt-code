@@ -2,7 +2,7 @@ import nox
 
 
 @nox.session
-@nox.parametrize("django", ["5.*", "4.*", "3.*"])
-def tests(session, django):
-    session.install(".", "pytest-django", f"django=={django}")
-    session.run("pytest")
+@nox.parametrize("a", ["1.0", "0.9"])
+@nox.parametrize("b", ["2.2", "2.1"])
+def tests(session, a, b):
+    print(a, b)  # all combinations of a and b
