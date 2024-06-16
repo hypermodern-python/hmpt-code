@@ -14,3 +14,7 @@ repos:
           # the pyproject.toml for the project unless we point it to the file
           # using the --config option.
           - "--config=chapter09-linting-with-ruff-and-pre-commit/pyproject.toml"
+
+        # This is a workaround specific to this repository. Only run the hook on
+        # files in the current project.
+        files: "^chapter09-linting-with-ruff-and-pre-commit"
