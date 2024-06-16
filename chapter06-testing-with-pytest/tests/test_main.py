@@ -63,6 +63,15 @@ def httpserver():
         thread.join()
 
 
+@pytest.fixture
+def serve(httpserver):
+    def f(article):
+        httpserver.article = article
+        return f"http://localhost:{httpserver.server_port}"
+
+    return f
+
+
 def test_fetch(article, httpserver):
     def serve(article):
         httpserver.article = article
