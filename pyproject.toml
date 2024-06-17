@@ -1,3 +1,0 @@
-[tool.mypy]
-strict = true
-pretty = true
